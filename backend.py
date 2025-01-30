@@ -16,23 +16,13 @@ load_dotenv()
 app = FastAPI()
 
 
-
 async_engine = create_async_engine(
     url='sqlite+aiosqlite:///users.db',
     echo=True)
 
 async_session_factory = async_sessionmaker(async_engine)
 
-
-
-
-
-
-
-
-
-IMEI_CHECK_URL = os.getenv("IMEI_URL")  # URL сервиса проверки IMEI
-
+IMEI_CHECK_URL = os.getenv("IMEI_URL")
 
 
 def check_imei(imei, token):
