@@ -65,6 +65,10 @@ async def imei_info(message: Message):
 
 @dp.message(Command('adduser'))
 async def add(message: Message):
+    user_id = message.from_user.id
+    whitelist = await get_whitelist(user_id)
+    if not whitelist:
+        return None
     data = message.text.split('/adduser')[1]
     print(int(data))
     await add_user(user_id=int(data))
